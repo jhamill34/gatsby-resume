@@ -1,0 +1,53 @@
+{
+  "name": "joshrasmussen-site",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "spedue clean",
+    "compile": "spedue compile 'src/**/*' --noEmit",
+    "lint": "spedue lint",
+    "start": "gatsby develop",
+    "test": "spedue test"
+  },
+  "prettier": "@spedue/prettier-config",
+  "eslintConfig": {
+    "extends": "@spedue/eslint-config"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.27",
+    "@mdx-js/react": "^1.5.5",
+    "date-fns": "^2.9.0",
+    "dotenv": "^8.2.0",
+    "gatsby": "^2.19.5",
+    "gatsby-image": "^2.2.39",
+    "gatsby-plugin-google-analytics": "^2.1.35",
+    "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-plugin-sharp": "^2.4.0",
+    "gatsby-plugin-sitemap": "^2.2.27",
+    "gatsby-plugin-theme-ui": "^0.3.0",
+    "gatsby-plugin-typescript": "^2.1.26",
+    "gatsby-source-airtable": "^2.1.0",
+    "gatsby-source-filesystem": "^2.1.46",
+    "gatsby-transformer-sharp": "^2.3.13",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "react-icons": "^3.9.0",
+    "theme-ui": "^0.3.1"
+  },
+  "devDependencies": {
+    "@spedue/scripts": "*",
+    "@testing-library/jest-dom": "4",
+    "@testing-library/react": "^9.4.0",
+    "@types/jest": "^24.9.0",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/theme-ui": "^0.3.0",
+    "jest-emotion": "^10.0.27",
+    "typescript": "^3.7.5"
+  }
+}
