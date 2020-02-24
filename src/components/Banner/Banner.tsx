@@ -24,8 +24,10 @@ export function Banner(props: BannerProps): ReactElement {
     <div
       sx={{
         display: 'flex',
+        justifyContent: 'space-between',
         flexWrap: 'wrap',
         color: 'background',
+        px: 4,
         backgroundImage: (theme: Theme): string =>
           `linear-gradient(45deg, ${theme.colors?.secondary}, ${theme.colors?.primary})`,
       }}
@@ -33,7 +35,7 @@ export function Banner(props: BannerProps): ReactElement {
       <div
         sx={{
           p: 3,
-          flexGrow: 1,
+          flex: '1 1 auto',
           textAlign: 'center',
         }}
       >
@@ -46,7 +48,7 @@ export function Banner(props: BannerProps): ReactElement {
           }}
         />
       </div>
-      <div sx={{ alignSelf: 'center', flexGrow: 1, p: 3 }}>
+      <div sx={{ alignSelf: 'center', flexGrow: 99999, p: 3 }}>
         <div
           sx={{
             fontSize: 5,
@@ -66,9 +68,8 @@ export function Banner(props: BannerProps): ReactElement {
 
       <div
         sx={{
-          flexBasis: '30%',
-          flexGrow: 1,
-          fontSize: 3,
+          flexGrow: 99999,
+          fontSize: 2,
           lineHeight: 'heading',
           fontFamily: 'heading',
           alignSelf: 'center',
@@ -76,22 +77,34 @@ export function Banner(props: BannerProps): ReactElement {
         }}
       >
         <div sx={{ mb: 2 }}>
-          <a href={social.twitter} sx={{ color: 'inherit' }}>
+          <a
+            href={social.twitter}
+            sx={{ color: 'inherit', textDecoration: 'none' }}
+          >
             <FaTwitter /> {social.twitter}
           </a>
         </div>
         <div sx={{ mb: 2 }}>
-          <a href={social.linkedin} sx={{ color: 'inherit' }}>
+          <a
+            href={social.linkedin}
+            sx={{ color: 'inherit', textDecoration: 'none' }}
+          >
             <FaLinkedin /> {social.linkedin}
           </a>
         </div>
         <div sx={{ mb: 2 }}>
-          <a href={social.gitlab} sx={{ color: 'inherit' }}>
+          <a
+            href={social.gitlab}
+            sx={{ color: 'inherit', textDecoration: 'none' }}
+          >
             <FaGitlab /> {social.gitlab}
           </a>
         </div>
         <div sx={{ mb: 2 }}>
-          <a href={social.github} sx={{ color: 'inherit' }}>
+          <a
+            href={social.github}
+            sx={{ color: 'inherit', textDecoration: 'none' }}
+          >
             <FaGithub /> {social.github}
           </a>
         </div>

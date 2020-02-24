@@ -1,9 +1,11 @@
 /** @jsx jsx */
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { FixedObject } from 'gatsby-image'
 import { compareDesc, parseISO } from 'date-fns'
+import { Global } from '@emotion/core'
 import {
   FaBriefcase,
   FaGraduationCap,
@@ -52,6 +54,27 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
 
   return (
     <Layout>
+      <Helmet>
+        <meta charSet="utf-8" />
+      </Helmet>
+      <Global
+        styles={{
+          '@media print': {
+            '@page': {
+              size: '8.5in 11in',
+            },
+
+            body: {
+              width: '100%',
+              height: '100%',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              fontSize: '14px',
+            },
+          },
+        }}
+      />
       <Banner
         email={email}
         image={props.data.headshot.childImageSharp.fixed}
@@ -75,41 +98,37 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
             }}
           >
             <Section icon={<FaPencilRuler />} title="Software Projects">
-              <div
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: '3em 1fr',
-                }}
-              >
-                {projects.map(p => [
-                  <TimelineItem key={`timeline-${p.data.name}`} />,
-                  <ProjectItem
-                    key={`project-${p.data.name}`}
-                    project={p.data}
-                  />,
-                ])}
-              </div>
+              {projects.map(p => (
+                <div
+                  key={`project-${p.data.name}`}
+                  sx={{
+                    display: 'grid',
+                    gridTemplateColumns: '3em 1fr',
+                  }}
+                >
+                  <TimelineItem />
+                  <ProjectItem project={p.data} />
+                </div>
+              ))}
             </Section>
 
             <Section icon={<FaBriefcase />} title="Work Experience">
-              <div
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: '3em 1fr',
-                }}
-              >
-                {experience
-                  .sort((a, b) =>
-                    compareDesc(parseISO(a.data.start), parseISO(b.data.start))
-                  )
-                  .map(e => [
-                    <TimelineItem key={`timeline-${e.data.name}`} />,
-                    <ExperienceItem
-                      experience={e.data}
-                      key={`experience-${e.data.name}`}
-                    />,
-                  ])}
-              </div>
+              {experience
+                .sort((a, b) =>
+                  compareDesc(parseISO(a.data.start), parseISO(b.data.start))
+                )
+                .map(e => (
+                  <div
+                    key={`experience-${e.data.name}`}
+                    sx={{
+                      display: 'grid',
+                      gridTemplateColumns: '3em 1fr',
+                    }}
+                  >
+                    <TimelineItem />
+                    <ExperienceItem experience={e.data} />
+                  </div>
+                ))}
             </Section>
           </div>
           <div
@@ -170,7 +189,7 @@ export const query = graphql`
 
     headshot: file(name: { eq: "headshot" }) {
       childImageSharp {
-        fixed(width: 200, height: 200) {
+        fixed(width: 100, height: 100) {
           ...GatsbyImageSharpFixed_tracedSVG
         }
       }

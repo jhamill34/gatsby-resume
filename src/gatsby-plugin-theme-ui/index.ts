@@ -2,8 +2,8 @@ import { Theme } from 'theme-ui'
 
 const theme: Theme = {
   fonts: {
-    body: 'system-ui, sans-serif',
-    heading: 'system-ui, sans-serif',
+    body: 'Helvetica, sans-serif',
+    heading: 'Helvetica, sans-serif',
     monospace: 'Menlo, monospace',
   },
   fontWeights: {
@@ -11,7 +11,7 @@ const theme: Theme = {
     heading: 700,
     bold: 700,
   },
-  fontSizes: [12, 14, 16, 18, 20, 32, 48, 64, 96],
+  fontSizes: ['0.67em', '0.83em', '1em', '1.17em', '1.5em', '2em'],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   lineHeights: {
     body: 1.5,
@@ -29,7 +29,7 @@ const theme: Theme = {
       fontFamily: 'body',
       lineHeight: 'body',
       fontWeight: 'body',
-      fontSize: 2,
+      fontSize: '16px',
     },
     h1: {
       color: 'text',
