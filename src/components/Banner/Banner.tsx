@@ -23,90 +23,162 @@ export function Banner(props: BannerProps): ReactElement {
   return (
     <div
       sx={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
         color: 'background',
         px: 4,
+        py: 2,
         backgroundImage: (theme: Theme): string =>
           `linear-gradient(45deg, ${theme.colors?.secondary}, ${theme.colors?.primary})`,
       }}
     >
       <div
         sx={{
-          p: 3,
-          flex: '1 1 auto',
-          textAlign: 'center',
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          alignItems: 'center',
         }}
       >
-        <Img
-          fixed={image}
-          sx={{
-            borderRadius: '100%',
-            border: (theme: Theme): string =>
-              `4px solid ${theme.colors?.background}`,
-          }}
-        />
-      </div>
-      <div sx={{ alignSelf: 'center', flexGrow: 99999, p: 3 }}>
         <div
           sx={{
-            fontSize: 5,
-            fontWeight: 'heading',
-            lineHeight: 'heading',
-            fontFamily: 'heading',
+            p: 3,
+            flex: '1 1 auto',
           }}
         >
-          {name.toUpperCase()}
+          <Img
+            fixed={image}
+            sx={{
+              borderRadius: '100%',
+              border: (theme: Theme): string =>
+                `4px solid ${theme.colors?.background}`,
+            }}
+          />
         </div>
-        <div sx={{ fontSize: 3, lineHeight: 'heading', fontFamily: 'heading' }}>
-          <a href={`mailto:${email}`} sx={{ color: 'inherit' }}>
-            <FaEnvelope /> {email}
-          </a>
+        <div sx={{ flexGrow: 99999, py: 3 }}>
+          <div
+            sx={{
+              fontSize: 4,
+              fontWeight: 'heading',
+              lineHeight: 'heading',
+              fontFamily: 'heading',
+            }}
+          >
+            {name.toUpperCase()}
+          </div>
+          <div
+            sx={{
+              fontSize: 3,
+              pt: 2,
+              lineHeight: 'heading',
+              fontFamily: 'heading',
+            }}
+          >
+            <a
+              href={`mailto:${email}`}
+              sx={{
+                color: 'inherit',
+                textDecoration: 'none',
+                borderBottom: '2px solid transparent',
+                outline: 'none',
+                transition:
+                  'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
+                ':hover,:focus': {
+                  color: 'text',
+                  borderBottomColor: 'text',
+                },
+              }}
+            >
+              <FaEnvelope /> {email}
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div
-        sx={{
-          flexGrow: 99999,
-          fontSize: 2,
-          lineHeight: 'heading',
-          fontFamily: 'heading',
-          alignSelf: 'center',
-          p: 3,
-        }}
-      >
-        <div sx={{ mb: 2 }}>
-          <a
-            href={social.twitter}
-            sx={{ color: 'inherit', textDecoration: 'none' }}
-          >
-            <FaTwitter /> {social.twitter}
-          </a>
-        </div>
-        <div sx={{ mb: 2 }}>
-          <a
-            href={social.linkedin}
-            sx={{ color: 'inherit', textDecoration: 'none' }}
-          >
-            <FaLinkedin /> {social.linkedin}
-          </a>
-        </div>
-        <div sx={{ mb: 2 }}>
-          <a
-            href={social.gitlab}
-            sx={{ color: 'inherit', textDecoration: 'none' }}
-          >
-            <FaGitlab /> {social.gitlab}
-          </a>
-        </div>
-        <div sx={{ mb: 2 }}>
-          <a
-            href={social.github}
-            sx={{ color: 'inherit', textDecoration: 'none' }}
-          >
-            <FaGithub /> {social.github}
-          </a>
+        <div
+          sx={{
+            fontSize: 1,
+            lineHeight: 'heading',
+            fontFamily: 'heading',
+            div: {
+              flexGrow: 1,
+              p: 1,
+            },
+          }}
+        >
+          <div>
+            <a
+              href={social.twitter}
+              sx={{
+                color: 'inherit',
+                textDecoration: 'none',
+                borderBottom: '2px solid transparent',
+                outline: 'none',
+                transition:
+                  'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
+                ':hover,:focus': {
+                  color: 'text',
+                  borderBottomColor: 'text',
+                },
+              }}
+            >
+              <FaTwitter /> {social.twitter}
+            </a>
+          </div>
+          <div>
+            <a
+              href={social.linkedin}
+              sx={{
+                color: 'inherit',
+                textDecoration: 'none',
+                borderBottom: '2px solid transparent',
+                outline: 'none',
+                transition:
+                  'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
+                ':hover,:focus': {
+                  color: 'text',
+                  borderBottomColor: 'text',
+                },
+              }}
+            >
+              <FaLinkedin /> {social.linkedin}
+            </a>
+          </div>
+          <div>
+            <a
+              href={social.gitlab}
+              sx={{
+                color: 'inherit',
+                textDecoration: 'none',
+                borderBottom: '2px solid transparent',
+                outline: 'none',
+                transition:
+                  'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
+                ':hover,:focus': {
+                  color: 'text',
+                  borderBottomColor: 'text',
+                },
+              }}
+            >
+              <FaGitlab /> {social.gitlab}
+            </a>
+          </div>
+          <div>
+            <a
+              href={social.github}
+              sx={{
+                color: 'inherit',
+                textDecoration: 'none',
+                borderBottom: '2px solid transparent',
+                outline: 'none',
+                transition:
+                  'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
+                ':hover,:focus': {
+                  color: 'text',
+                  borderBottomColor: 'text',
+                },
+              }}
+            >
+              <FaGithub /> {social.github}
+            </a>
+          </div>
         </div>
       </div>
     </div>

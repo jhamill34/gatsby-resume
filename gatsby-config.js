@@ -34,7 +34,13 @@ module.exports = {
             baseId: process.env.AIRTABLE_PERSONAL_BASEID,
             tableName: `Resume`,
             tableView: `Grid view`,
-            tableLinks: ['education', 'experience', 'projects', 'skills'],
+            tableLinks: [
+              'education',
+              'experience',
+              'projects',
+              'otherProjects',
+              'skills',
+            ],
           },
           {
             baseId: process.env.AIRTABLE_PERSONAL_BASEID,

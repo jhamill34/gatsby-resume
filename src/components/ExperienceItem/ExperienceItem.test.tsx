@@ -11,6 +11,7 @@ const mockExp: Experience = {
   start: '2019-01-01',
   end: '2020-01-01',
   description: 'Lorem Ipsum',
+  printable: true,
   technologies: [
     { data: { name: 'Java', level: '1' } },
     { data: { name: 'C++', level: '2' } },
@@ -56,4 +57,7 @@ describe('<ExperienceItem />', () => {
     expect(getByText('Java')).not.toBeNull()
     expect(getByText('C++')).not.toBeNull()
   })
+
+  it.todo('should render block on print')
+  it.todo('should render none on print')
 })

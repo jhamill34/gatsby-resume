@@ -23,6 +23,11 @@ export function SkillItem(props: SkillItemProps): ReactElement {
         px: 2,
         py: 1,
         borderRadius: 4,
+        transition: 'all 0.3s ease-in-out',
+        ':hover, :focus': {
+          backgroundImage: (theme: Theme): string =>
+            `linear-gradient(90deg, ${theme.colors?.primary}, ${theme.colors?.secondary})`,
+        },
       }}
     >
       {name}

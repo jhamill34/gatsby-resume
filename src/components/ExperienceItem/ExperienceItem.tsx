@@ -26,7 +26,7 @@ export function ExperienceItem(props: ExperienceItemProps): ReactElement {
   return (
     <div
       sx={{
-        mb: 3,
+        mb: 2,
       }}
     >
       <div
@@ -42,7 +42,7 @@ export function ExperienceItem(props: ExperienceItemProps): ReactElement {
             fontWeight: 'heading',
             lineHeight: 'heading',
             fontFamily: 'heading',
-            minWidth: 250,
+            minWidth: 230,
             mr: 3,
           }}
         >

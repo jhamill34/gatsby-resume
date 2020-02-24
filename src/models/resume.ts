@@ -30,6 +30,7 @@ export type Experience = {
   start: string
   end: string
   technologies: Data<Skill>[]
+  printable: boolean
 }
 
 export type Education = {
@@ -49,5 +50,6 @@ export type Resume = {
   education: Data<Education>[]
   experience: Data<Experience>[]
   projects: Data<Project>[]
+  otherProjects: Data<Project>[]
   skills: Data<Skill>[]
 }

@@ -14,6 +14,6 @@ describe('<Layout />', () => {
 
   it('should have a max width', () => {
     const { container } = render(<Layout>Child</Layout>)
-    expect(container.firstChild).toHaveStyleRule('max-width', '1000px')
+    expect(container.firstChild).toHaveStyleRule('max-width', '1024px')
   })
 })

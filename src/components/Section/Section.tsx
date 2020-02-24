@@ -22,12 +22,12 @@ export function Section(props: SectionProps): ReactElement {
     >
       <div
         sx={{
-          fontSize: 4,
+          fontSize: 3,
           fontWeight: 'heading',
           lineHeight: 'heading',
           fontFamily: 'heading',
-          py: 3,
-          my: 3,
+          py: 2,
+          my: 2,
           borderBottom: (theme: Theme): string =>
             `1px solid ${theme.colors?.text}`,
         }}

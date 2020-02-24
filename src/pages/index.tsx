@@ -12,6 +12,8 @@ import {
   FaPencilRuler,
   FaMagic,
   FaBook,
+  FaLink,
+  FaGitlab,
 } from 'react-icons/fa'
 import {
   Layout,
@@ -49,6 +51,7 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
     experience,
     education,
     projects,
+    otherProjects,
     skills,
   } = props.data.resume.data
 
@@ -81,7 +84,7 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
         name={name}
         social={props.data.site.siteMetadata.social}
       />
-      <div sx={{ px: 4 }}>
+      <div sx={{ px: 2 }}>
         <Section title="Career Summary">{objective}</Section>
 
         <div
@@ -111,7 +114,6 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
                 </div>
               ))}
             </Section>
-
             <Section icon={<FaBriefcase />} title="Work Experience">
               {experience
                 .sort((a, b) =>
@@ -123,6 +125,9 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
                     sx={{
                       display: 'grid',
                       gridTemplateColumns: '3em 1fr',
+                      '@media print': {
+                        display: e.data.printable ? 'grid' : 'none',
+                      },
                     }}
                   >
                     <TimelineItem />
@@ -167,6 +172,87 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
                   />
                 ))}
             </Section>
+            <Section title="Other Projects">
+              {otherProjects.map(p => (
+                <div
+                  key={`other-project-${p.data.name}`}
+                  sx={{
+                    mb: 2,
+                  }}
+                >
+                  <div
+                    sx={{
+                      fontSize: 2,
+                      fontWeight: 'heading',
+                      lineHeight: 'heading',
+                      fontFamily: 'heading',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'flex-start',
+                      mb: 1,
+                    }}
+                  >
+                    {p.data.link ? (
+                      <a
+                        href={p.data.link}
+                        sx={{
+                          display: 'block',
+                          color: 'text',
+                          textDecoration: 'none',
+                          outline: 'none',
+                          borderBottom: '2px solid transparent',
+                          transition:
+                            'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
+                          ':hover, :focus': {
+                            color: 'primary',
+                            borderBottomColor: 'primary',
+                          },
+                        }}
+                        title="Link to Project"
+                      >
+                        {p.data.name} <FaLink />
+                      </a>
+                    ) : (
+                      p.data.name
+                    )}
+                    {p.data.repository ? (
+                      <a
+                        href={p.data.repository}
+                        sx={{
+                          display: 'block',
+                          fontSize: 1,
+                          color: 'secondary',
+                          textDecoration: 'none',
+                          outline: 'none',
+                          my: 1,
+                          borderBottom: '2px solid transparent',
+                          transition:
+                            'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
+                          ':hover, :focus': {
+                            color: 'primary',
+                            borderBottomColor: 'primary',
+                          },
+                        }}
+                        title="Link to Repository"
+                      >
+                        <FaGitlab /> Link to Repo
+                      </a>
+                    ) : null}
+                  </div>
+                  <div sx={{ color: 'muted', fontSize: 1, mb: 2 }}>
+                    {p.data.description}
+                  </div>
+                  <div sx={{ display: 'flex', flexWrap: 'wrap' }}>
+                    {p.data.technologies.map(s => (
+                      <SkillItem
+                        key={`other-tech-${s.data.name}`}
+                        skill={s.data}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </Section>
           </div>
         </div>
       </div>
@@ -189,7 +275,7 @@ export const query = graphql`
 
     headshot: file(name: { eq: "headshot" }) {
       childImageSharp {
-        fixed(width: 100, height: 100) {
+        fixed(width: 75, height: 75) {
           ...GatsbyImageSharpFixed_tracedSVG
         }
       }
@@ -222,6 +308,7 @@ export const query = graphql`
             description
             start
             end
+            printable
             technologies {
               data {
                 name
@@ -231,6 +318,20 @@ export const query = graphql`
           }
         }
         projects {
+          data {
+            name
+            description
+            link
+            repository
+            technologies {
+              data {
+                name
+                level
+              }
+            }
+          }
+        }
+        otherProjects {
           data {
             name
             description
