@@ -2,6 +2,13 @@ export type Data<T> = {
   data: T
 }
 
+export type Social = {
+  github: string
+  gitlab: string
+  twitter: string
+  linkedin: string
+}
+
 export type Skill = {
   name: string
   level: string

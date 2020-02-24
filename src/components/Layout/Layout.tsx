@@ -12,7 +12,6 @@ export function Layout(props: LayoutProps): ReactElement {
       sx={{
         maxWidth: '1000px',
         margin: 'auto',
-        p: 4,
         boxShadow: '0 2px 26px rgba(0, 0, 0, 0.08)',
       }}
     >

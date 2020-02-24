@@ -4,9 +4,14 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Set your title here...`,
-    description: `Description goes here...`,
+    title: `Joshua Rasmussen Resume`,
     author: `Joshua Rasmussen`,
+    social: {
+      github: 'github.com/joshrasmussen',
+      gitlab: 'gitlab.com/joshrasmussen',
+      twitter: 'twitter.com/jlrasmussen34',
+      linkedin: 'linkedin.com/in/jlrasmussen34',
+    },
   },
   plugins: [
     `gatsby-transformer-sharp`,
