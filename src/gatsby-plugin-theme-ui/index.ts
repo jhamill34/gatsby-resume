@@ -1,6 +1,13 @@
 import { Theme } from 'theme-ui'
+import { SystemStyleObject } from '@styled-system/css'
 
-const theme: Theme = {
+type LinkVariants = {
+  links: {
+    [key: string]: SystemStyleObject
+  }
+}
+
+const theme: Theme & LinkVariants = {
   fonts: {
     body: 'Helvetica, sans-serif',
     heading: 'Helvetica, sans-serif',
@@ -11,7 +18,7 @@ const theme: Theme = {
     heading: 700,
     bold: 700,
   },
-  fontSizes: ['0.67em', '0.83em', '1em', '1.17em', '1.5em', '2em'],
+  fontSizes: [8, 10, 12, 14, 18, 24, 32],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   lineHeights: {
     body: 1.5,
@@ -24,36 +31,55 @@ const theme: Theme = {
     secondary: '#31A1C8',
     muted: '#585858',
   },
+  links: {
+    banner: {
+      color: 'background',
+      ':focus, :hover': {
+        color: 'text',
+        borderBottomColor: 'text',
+      },
+    },
+    heading: {
+      color: 'text',
+    },
+  },
   styles: {
     root: {
       fontFamily: 'body',
       lineHeight: 'body',
       fontWeight: 'body',
-      fontSize: '16px',
+      fontSize: 3,
     },
     h1: {
-      color: 'text',
+      color: 'background',
+      my: 1,
       fontFamily: 'heading',
       lineHeight: 'heading',
       fontWeight: 'heading',
       fontSize: 5,
     },
     h2: {
-      color: 'text',
-      fontFamily: 'heading',
-      lineHeight: 'heading',
-      fontWeight: 'heading',
       fontSize: 4,
+      fontWeight: 'heading',
+      lineHeight: 'heading',
+      fontFamily: 'heading',
+      py: 2,
+      my: 2,
+      borderBottom: (theme: Theme): string => `1px solid ${theme.colors?.text}`,
     },
     h3: {
       color: 'text',
+      mt: 0,
+      mb: 1,
       fontFamily: 'heading',
       lineHeight: 'heading',
       fontWeight: 'heading',
       fontSize: 3,
     },
     h4: {
-      color: 'text',
+      color: 'muted',
+      mt: 2,
+      mb: 1,
       fontFamily: 'heading',
       lineHeight: 'heading',
       fontWeight: 'heading',
@@ -78,9 +104,21 @@ const theme: Theme = {
       fontFamily: 'body',
       fontWeight: 'body',
       lineHeight: 'body',
+      my: 1,
     },
     a: {
-      color: 'primary',
+      fontSize: 'inherit',
+      color: 'secondary',
+      textDecoration: 'none',
+      mb: 1,
+      outline: 'none',
+      borderBottom: '2px solid transparent',
+      transition:
+        'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
+      ':hover, :focus': {
+        color: 'primary',
+        borderBottomColor: 'primary',
+      },
     },
     img: {
       maxWidth: '100%',

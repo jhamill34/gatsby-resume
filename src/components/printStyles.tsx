@@ -16,7 +16,6 @@ export function PrintStyles(): ReactElement {
             position: 'fixed',
             top: 0,
             left: 0,
-            fontSize: '14px',
           },
         },
       }}

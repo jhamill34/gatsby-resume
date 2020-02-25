@@ -2,6 +2,10 @@
 import { ReactElement } from 'react'
 import { jsx, Theme } from 'theme-ui'
 
+/**
+ * This component can be used to create a timeline
+ * when used adjacent to each other.
+ */
 export function TimelineItem(): ReactElement {
   return (
     <div
@@ -25,7 +29,13 @@ export function TimelineItem(): ReactElement {
         }}
       />
       <div
-        sx={{ height: '100%', width: '2px', flexGrow: 1, bg: 'secondary' }}
+        sx={{
+          flexBasis: '100%',
+          minHeight: '2px',
+          minWidth: '2px',
+          flexGrow: 1,
+          bg: 'secondary',
+        }}
       />
     </div>
   )

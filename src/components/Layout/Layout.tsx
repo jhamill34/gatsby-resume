@@ -3,9 +3,13 @@ import { ReactNode, ReactElement } from 'react'
 import { jsx } from 'theme-ui'
 
 type LayoutProps = {
+  /** Child nodes to be rendered */
   children: ReactNode
 }
 
+/**
+ * This component is intended to ouline the main page for a web view.
+ */
 export function Layout(props: LayoutProps): ReactElement {
   return (
     <div

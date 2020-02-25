@@ -4,16 +4,22 @@ import { jsx, Theme } from 'theme-ui'
 import { Skill } from '../../models/resume'
 
 type SkillItemProps = {
+  /** Information related to a skill */
   skill: Skill
 }
 
+/**
+ * This component represents a single skill item that is rendered
+ * in an unordered list (i.e. SkillList).
+ */
 export function SkillItem(props: SkillItemProps): ReactElement {
   const { name } = props.skill
 
   return (
-    <div
+    <li
       sx={{
-        fontSize: 0,
+        listStyleType: 'none',
+        fontSize: 1,
         color: 'background',
         backgroundImage: (theme: Theme): string =>
           `linear-gradient(90deg, ${theme.colors?.secondary}, ${theme.colors?.primary})`,
@@ -31,6 +37,6 @@ export function SkillItem(props: SkillItemProps): ReactElement {
       }}
     >
       {name}
-    </div>
+    </li>
   )
 }

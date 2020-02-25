@@ -141,7 +141,6 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
             <Section key="other-projects" title="Other Projects">
               {otherProjects.map(p => (
                 <ProjectItem
-                  fontSize={2}
                   key={`small-project-${p.data.name}`}
                   project={p.data}
                 />

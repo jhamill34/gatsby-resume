@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { ReactElement } from 'react'
-import { jsx } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import { format, parseISO } from 'date-fns'
 import { Experience } from '../../models/resume'
 import { SkillList } from '../SkillList'
@@ -9,6 +9,13 @@ type ExperienceItemProps = {
   experience: Experience
 }
 
+/**
+ * Formats items intended to highlight a person's work experience
+ * on the resume
+ *
+ * Note: This component only makes sense in a <Section /> tag so
+ * the heading levels start at h3 here
+ */
 export function ExperienceItem(props: ExperienceItemProps): ReactElement {
   const {
     description,
@@ -24,39 +31,22 @@ export function ExperienceItem(props: ExperienceItemProps): ReactElement {
   const timeFrame = `${startFmt} - ${endFmt}`
 
   return (
-    <div sx={{ m: 1 }}>
+    <div>
       <div
         sx={{
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
+          alignItems: 'flex-end',
         }}
       >
-        <div
-          sx={{
-            fontSize: 3,
-            fontWeight: 'heading',
-            lineHeight: 'heading',
-            fontFamily: 'heading',
-            minWidth: 230,
-            mr: 3,
-          }}
-        >
-          {position}
-        </div>
-
-        <div
-          sx={{
-            fontSize: 1,
-            color: 'muted',
-            fontWeight: 'heading',
-          }}
-        >
-          {name}
-        </div>
+        <Styled.h3 sx={{ minWidth: 230, mr: 3 }}>{position}</Styled.h3>
+        <Styled.h4>{name}</Styled.h4>
       </div>
-      <div sx={{ fontSize: 1, mb: 2, color: 'muted' }}>{timeFrame}</div>
-      {description}
+
+      <div sx={{ fontSize: 2, color: 'muted' }}>{timeFrame}</div>
+
+      <Styled.p>{description}</Styled.p>
 
       <SkillList skills={technologies} />
     </div>

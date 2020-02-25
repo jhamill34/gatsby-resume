@@ -1,60 +1,68 @@
 /** @jsx jsx */
 import { ReactElement } from 'react'
-import { jsx } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 import { FaTwitter, FaLinkedin, FaGitlab, FaGithub } from 'react-icons/fa'
-import { Link } from '../Link'
 import { Social } from '../../models/resume'
 
 type SocialListProps = {
+  /** object containing social media information */
   social: Social
 }
 
+/**
+ * This component creates a list of social media links
+ */
 export function SocialList(props: SocialListProps): ReactElement {
   const { social } = props
 
   return (
-    <div
+    <ul
       sx={{
-        fontSize: 1,
-        lineHeight: 'heading',
-        fontFamily: 'heading',
+        fontSize: 2,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
+        li: {
+          listStyleType: 'none',
+        },
       }}
     >
-      <Link
-        activeColor="text"
-        color="inherit"
-        href={social.twitter}
-        title="Twitter Link"
-      >
-        <FaTwitter /> {social.twitter}
-      </Link>
-      <Link
-        activeColor="text"
-        color="inherit"
-        href={social.linkedin}
-        title="Linked In Link"
-      >
-        <FaLinkedin /> {social.linkedin}
-      </Link>
-      <Link
-        activeColor="text"
-        color="inherit"
-        href={social.gitlab}
-        title="Gitlab Link"
-      >
-        <FaGitlab /> {social.gitlab}
-      </Link>
-      <Link
-        activeColor="text"
-        color="inherit"
-        href={social.github}
-        title="Github Link"
-      >
-        <FaGithub /> {social.github}
-      </Link>
-    </div>
+      <li>
+        <Styled.a
+          href={social.twitter}
+          sx={{ variant: 'links.banner' }}
+          title="Twitter Link"
+        >
+          <FaTwitter /> {social.twitter}
+        </Styled.a>
+      </li>
+      <li>
+        <Styled.a
+          href={social.twitter}
+          sx={{ variant: 'links.banner' }}
+          title="Twitter Link"
+        >
+          <FaLinkedin /> {social.linkedin}
+        </Styled.a>
+      </li>
+      <li>
+        <Styled.a
+          href={social.twitter}
+          sx={{ variant: 'links.banner' }}
+          title="Twitter Link"
+        >
+          <FaGitlab /> {social.gitlab}
+        </Styled.a>
+      </li>
+      <li>
+        <Styled.a
+          href={social.twitter}
+          sx={{ variant: 'links.banner' }}
+          title="Twitter Link"
+        >
+          <FaGithub /> {social.github}
+        </Styled.a>
+      </li>
+    </ul>
   )
 }

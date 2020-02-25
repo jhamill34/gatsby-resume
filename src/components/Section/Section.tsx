@@ -1,40 +1,31 @@
 /** @jsx jsx */
 import { ReactNode, ReactElement } from 'react'
-import { jsx, Theme } from 'theme-ui'
+import { jsx, Styled } from 'theme-ui'
 
 type SectionProps = {
-  /** */
+  /** The title of the section */
   title: string
 
-  /** */
+  /**
+   * The icon to use for a section, if undefined
+   * then no icon is used
+   */
   icon?: ReactElement
 
-  /** */
+  /** Child nodes to render */
   children: ReactNode
 }
 
+/**
+ * This component defines an area to use as a resume section.
+ */
 export function Section(props: SectionProps): ReactElement {
   return (
-    <div
-      sx={{
-        px: 3,
-      }}
-    >
-      <div
-        sx={{
-          fontSize: 3,
-          fontWeight: 'heading',
-          lineHeight: 'heading',
-          fontFamily: 'heading',
-          py: 2,
-          my: 2,
-          borderBottom: (theme: Theme): string =>
-            `1px solid ${theme.colors?.text}`,
-        }}
-      >
+    <div sx={{ px: 3 }}>
+      <Styled.h2>
         {props.icon} {props.title.toUpperCase()}
-      </div>
-      {props.children}
+      </Styled.h2>
+      <Styled.p>{props.children}</Styled.p>
     </div>
   )
 }

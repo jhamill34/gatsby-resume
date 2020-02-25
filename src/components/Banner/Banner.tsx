@@ -1,19 +1,29 @@
 /** @jsx jsx */
 import { ReactElement } from 'react'
-import { jsx, Theme } from 'theme-ui'
+import { jsx, Theme, Styled } from 'theme-ui'
 import Img, { FixedObject } from 'gatsby-image'
 import { FaEnvelope } from 'react-icons/fa'
 import { Social } from '../../models/resume'
-import { Link } from '../Link'
 import { SocialList } from '../SocialList'
 
 type BannerProps = {
+  /** The persons name at the top of the resume */
   name: string
+
+  /** The person's contact email */
   email: string
+
+  /** The person's headshot to display in the upper corner */
   image: FixedObject
+
+  /** An object refering to social media accounts */
   social: Social
 }
 
+/**
+ * This component belongs at the top of the page and
+ * draws attention to the main contact information.
+ */
 export function Banner(props: BannerProps): ReactElement {
   const { name, email, image, social } = props
   return (
@@ -53,30 +63,20 @@ export function Banner(props: BannerProps): ReactElement {
           sx={{
             flexGrow: 99999,
             py: 3,
+            fontSize: 3,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'flex-start',
           }}
         >
-          <div
-            sx={{
-              fontSize: 4,
-              fontWeight: 'heading',
-              lineHeight: 'heading',
-              fontFamily: 'heading',
-            }}
-          >
-            {name.toUpperCase()}
-          </div>
-          <Link
-            activeColor="text"
-            color="inherit"
+          <Styled.h1>{name.toUpperCase()}</Styled.h1>
+          <Styled.a
             href={`mailto:${email}`}
-            size={3}
+            sx={{ variant: 'links.banner' }}
             title="Email Me"
           >
             <FaEnvelope /> {email}
-          </Link>
+          </Styled.a>
         </div>
 
         <SocialList social={social} />
