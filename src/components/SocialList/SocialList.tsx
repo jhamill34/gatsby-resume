@@ -4,13 +4,6 @@ import { jsx, Styled } from 'theme-ui'
 import { FaTwitter, FaLinkedin, FaGitlab, FaGithub } from 'react-icons/fa'
 import { graphql } from 'gatsby'
 
-export type Social = {
-  github: string
-  gitlab: string
-  twitter: string
-  linkedin: string
-}
-
 export const query = graphql`
   fragment SocialFragment on SiteSiteMetadataSocial {
     github
@@ -22,7 +15,7 @@ export const query = graphql`
 
 type SocialListProps = {
   /** object containing social media information */
-  social: Social
+  social: SocialModel
 }
 
 /**

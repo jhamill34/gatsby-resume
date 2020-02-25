@@ -2,16 +2,10 @@
 import { ReactElement } from 'react'
 import { jsx, Theme } from 'theme-ui'
 import { graphql } from 'gatsby'
-import { Data } from '../models/resume'
-
-export type Skill = {
-  name: string
-  level: string
-}
 
 type SkillListProps = {
   /** an array of skills wrapped in a data key */
-  skills: Data<Skill>[]
+  skills: Data<SkillModel>[]
 }
 
 export const query = graphql`

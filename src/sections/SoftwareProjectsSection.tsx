@@ -2,18 +2,15 @@
 import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
 import { FaPencilRuler } from 'react-icons/fa'
-
-import { Section } from '../components/Section'
-import { PrintableRow } from '../components/PrintableRow'
-import { TimelineItem } from '../components/TimelineItem'
-import { ProjectItem, Project } from '../components/ProjectItem'
-import { Data } from '../models/resume'
+import { Section, PrintableRow, TimelineItem, ProjectItem } from '../components'
 
 type SoftwareProjectsProps = {
-  projects: Data<Project>[]
+  projects: Data<ProjectModel>[]
 }
 
-export function SoftwareProjects(props: SoftwareProjectsProps): ReactElement {
+export function SoftwareProjectsSection(
+  props: SoftwareProjectsProps
+): ReactElement {
   const { projects } = props
 
   return (

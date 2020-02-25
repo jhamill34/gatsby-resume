@@ -3,22 +3,10 @@ import { ReactElement } from 'react'
 import { jsx, Styled } from 'theme-ui'
 import { format, parseISO } from 'date-fns'
 import { graphql } from 'gatsby'
-import { Data } from '../../models/resume'
-import { SkillList, Skill } from '../SkillList'
-
-export type Experience = {
-  name: string
-  position: string
-  location: string
-  description: string
-  start: string
-  end: string
-  technologies: Data<Skill>[]
-  printable: boolean
-}
+import { SkillList } from '../SkillList'
 
 type ExperienceItemProps = {
-  experience: Experience
+  experience: ExperienceModel
 }
 
 export const query = graphql`

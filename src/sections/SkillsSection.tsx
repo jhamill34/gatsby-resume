@@ -2,15 +2,13 @@
 import { ReactElement } from 'react'
 import { jsx, Styled } from 'theme-ui'
 import { FaMagic } from 'react-icons/fa'
-import { Section } from '../components/Section'
-import { SkillList, Skill } from '../components/SkillList'
-import { Data } from '../models/resume'
+import { Section, SkillList } from '../components'
 
 type SkillsProps = {
-  skills: Data<Skill>[]
+  skills: Data<SkillModel>[]
 }
 
-export function Skills(props: SkillsProps): ReactElement {
+export function SkillsSection(props: SkillsProps): ReactElement {
   const { skills } = props
 
   return (

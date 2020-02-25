@@ -1,1 +1,1 @@
-export * from './ProjectItem'
+export { ProjectItem } from './ProjectItem'

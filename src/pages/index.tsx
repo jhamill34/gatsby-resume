@@ -4,43 +4,26 @@ import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { FixedObject } from 'gatsby-image'
 
-import { Education as Edu } from '../components/EducationItem'
-import { Experience } from '../components/ExperienceItem'
-import { Skill } from '../components/SkillList'
-import { Project } from '../components/ProjectItem'
 import { ColumnLayout } from '../components/ColumnLayout'
 import { Layout } from '../components/Layout'
 import { SEO } from '../components/SEO'
-import { Social } from '../components/SocialList'
 
 import {
-  Banner,
-  CareerSummary,
-  SoftwareProjects,
-  WorkExperience,
-  Skills,
-  Education,
-  OtherProjects,
+  BannerSection,
+  CareerSummarySection,
+  SoftwareProjectsSection,
+  WorkExperienceSection,
+  SkillsSection,
+  EducationSection,
+  OtherProjectsSection,
 } from '../sections'
-import { Data } from '../models/resume'
 import { PrintStyles } from '../components/printStyles'
-
-export type Resume = {
-  name: string
-  objective: string
-  email: string
-  education: Data<Edu>[]
-  experience: Data<Experience>[]
-  projects: Data<Project>[]
-  otherProjects: Data<Project>[]
-  skills: Data<Skill>[]
-}
 
 type IndexPageProps = {
   data: {
     site: {
       siteMetadata: {
-        social: Social
+        social: SocialModel
       }
     }
     headshot: {
@@ -48,7 +31,7 @@ type IndexPageProps = {
         fixed: FixedObject
       }
     }
-    resume: Data<Resume>
+    resume: Data<ResumeModel>
   }
 }
 
@@ -68,23 +51,29 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
     <Layout>
       <SEO />
       <PrintStyles />
-      <Banner
+      <BannerSection
         email={email}
         image={props.data.headshot.childImageSharp.fixed}
         name={name}
         social={props.data.site.siteMetadata.social}
       />
       <div sx={{ px: 2 }}>
-        <CareerSummary objective={objective} />
+        <CareerSummarySection objective={objective} />
         <ColumnLayout
           main={[
-            <SoftwareProjects key="software-projects" projects={projects} />,
-            <WorkExperience experience={experience} key="work-experience" />,
+            <SoftwareProjectsSection
+              key="software-projects"
+              projects={projects}
+            />,
+            <WorkExperienceSection
+              experience={experience}
+              key="work-experience"
+            />,
           ]}
           side={[
-            <Skills key="other-skills" skills={skills} />,
-            <Education education={education} key="education" />,
-            <OtherProjects
+            <SkillsSection key="other-skills" skills={skills} />,
+            <EducationSection education={education} key="education" />,
+            <OtherProjectsSection
               key="other-projects"
               otherProjects={otherProjects}
             />,

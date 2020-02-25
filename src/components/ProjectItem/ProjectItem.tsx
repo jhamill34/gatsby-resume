@@ -3,20 +3,11 @@ import { ReactElement } from 'react'
 import { jsx, Styled } from 'theme-ui'
 import { FaGitlab, FaLink } from 'react-icons/fa'
 import { graphql } from 'gatsby'
-import { SkillList, Skill } from '../SkillList'
-import { Data } from '../../models/resume'
-
-export type Project = {
-  name: string
-  description: string
-  link: string
-  repository: string
-  technologies: Data<Skill>[]
-}
+import { SkillList } from '../SkillList'
 
 type ProjectItemProps = {
   /** Object containing project related information */
-  project: Project
+  project: ProjectModel
 }
 
 export const query = graphql`

@@ -1,1 +1,1 @@
-export * from './ExperienceItem'
+export { ExperienceItem } from './ExperienceItem'

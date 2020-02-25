@@ -1,15 +1,13 @@
 /** @jsx jsx */
 import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
-import { Section } from '../components/Section'
-import { ProjectItem, Project } from '../components/ProjectItem'
-import { Data } from '../models/resume'
+import { Section, ProjectItem } from '../components'
 
 type OtherProjectsProps = {
-  otherProjects: Data<Project>[]
+  otherProjects: Data<ProjectModel>[]
 }
 
-export function OtherProjects(props: OtherProjectsProps): ReactElement {
+export function OtherProjectsSection(props: OtherProjectsProps): ReactElement {
   const { otherProjects } = props
 
   return (

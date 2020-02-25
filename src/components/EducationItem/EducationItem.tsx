@@ -5,19 +5,9 @@ import { format, parseISO } from 'date-fns'
 
 import { graphql } from 'gatsby'
 
-export type Education = {
-  name: string
-  location: string
-  major: string
-  description: string
-  specialization: string
-  start: string
-  end: string
-}
-
 type EducationItemProps = {
   /** An object of all education related information */
-  education: Education
+  education: EducationModel
 }
 
 export const query = graphql`
@@ -25,7 +15,6 @@ export const query = graphql`
     name
     location
     major
-    description
     specialization
     start
     end

@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '../test-helper'
-import { ProjectItem, Project } from './ProjectItem'
+import { ProjectItem } from './ProjectItem'
 
-const mockProj: Project = {
+const mockProj: ProjectModel = {
   name: 'Color Mode Addon',
   description: 'Lorem Ipsum',
   link: 'https://example.com',

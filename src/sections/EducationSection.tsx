@@ -3,15 +3,13 @@ import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
 import { FaGraduationCap } from 'react-icons/fa'
 import { compareDesc, parseISO } from 'date-fns'
-import { Section } from '../components/Section'
-import { EducationItem, Education as Edu } from '../components/EducationItem'
-import { Data } from '../models/resume'
+import { Section, EducationItem } from '../components'
 
 type EducationProps = {
-  education: Data<Edu>[]
+  education: Data<EducationModel>[]
 }
 
-export function Education(props: EducationProps): ReactElement {
+export function EducationSection(props: EducationProps): ReactElement {
   const { education } = props
 
   return (

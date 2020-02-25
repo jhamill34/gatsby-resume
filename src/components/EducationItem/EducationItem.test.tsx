@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from '../test-helper'
 
-import { EducationItem, Education } from './EducationItem'
+import { EducationItem } from './EducationItem'
 
-const mockEd: Education = {
+const mockEd: EducationModel = {
   name: 'University of Washington',
   start: '2012-09-01',
   end: '2014-06-15',

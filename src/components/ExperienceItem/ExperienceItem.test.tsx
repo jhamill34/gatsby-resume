@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from '../test-helper'
 
-import { ExperienceItem, Experience } from './ExperienceItem'
+import { ExperienceItem } from './ExperienceItem'
 
-const mockExp: Experience = {
+const mockExp: ExperienceModel = {
   name: 'Google',
   position: 'Full Stack Engineer',
   location: 'Seattle, WA',

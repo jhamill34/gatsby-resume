@@ -1,1 +1,1 @@
-export * from './TimelineItem'
+export { TimelineItem } from './TimelineItem'

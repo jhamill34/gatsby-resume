@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 import { jsx, Theme, Styled } from 'theme-ui'
 import Img, { FixedObject } from 'gatsby-image'
 import { FaEnvelope } from 'react-icons/fa'
-import { SocialList, Social } from '../components/SocialList'
+import { SocialList } from '../components'
 
 type BannerProps = {
   /** The persons name at the top of the resume */
@@ -16,14 +16,14 @@ type BannerProps = {
   image: FixedObject
 
   /** An object refering to social media accounts */
-  social: Social
+  social: SocialModel
 }
 
 /**
  * This component belongs at the top of the page and
  * draws attention to the main contact information.
  */
-export function Banner(props: BannerProps): ReactElement {
+export function BannerSection(props: BannerProps): ReactElement {
   const { name, email, image, social } = props
   return (
     <div
