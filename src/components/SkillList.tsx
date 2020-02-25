@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
-import { Data, Skill } from '../../models/resume'
-import { SkillItem } from '../SkillItem'
+import { Data, Skill } from '../models/resume'
+import { SkillItem } from './SkillItem'
 
 type SkillListProps = {
   /** an array of skills wrapped in a data key */

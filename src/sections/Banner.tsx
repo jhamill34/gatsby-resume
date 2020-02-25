@@ -3,8 +3,7 @@ import { ReactElement } from 'react'
 import { jsx, Theme, Styled } from 'theme-ui'
 import Img, { FixedObject } from 'gatsby-image'
 import { FaEnvelope } from 'react-icons/fa'
-import { Social } from '../../models/resume'
-import { SocialList } from '../SocialList'
+import { SocialList, Social } from '../components/SocialList'
 
 type BannerProps = {
   /** The persons name at the top of the resume */

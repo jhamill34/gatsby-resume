@@ -1,4 +1,3 @@
-export * from './Banner'
 export * from './ColumnLayout'
 export * from './EducationItem'
 export * from './ExperienceItem'

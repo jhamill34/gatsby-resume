@@ -3,29 +3,20 @@ import React from 'react'
 import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { FixedObject } from 'gatsby-image'
-import { compareDesc, parseISO } from 'date-fns'
-import {
-  FaBriefcase,
-  FaGraduationCap,
-  FaPencilRuler,
-  FaMagic,
-  FaBook,
-} from 'react-icons/fa'
+import { ColumnLayout, Layout, SEO } from '../components'
 import {
   Banner,
-  ColumnLayout,
-  EducationItem,
-  ExperienceItem,
-  Layout,
-  PrintableRow,
-  ProjectItem,
-  SEO,
-  Section,
-  SkillList,
-  TimelineItem,
-} from '../components'
-import { Resume, Data, Social } from '../models/resume'
+  CareerSummary,
+  SoftwareProjects,
+  WorkExperience,
+  OtherSkills,
+  Interests,
+  Education,
+  OtherProjects,
+} from '../sections'
+import { Resume, Data } from '../models/resume'
 import { PrintStyles } from '../components/printStyles'
+import { Social } from '../components/SocialList'
 
 type IndexPageProps = {
   data: {
@@ -66,86 +57,20 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
         social={props.data.site.siteMetadata.social}
       />
       <div sx={{ px: 2 }}>
-        <Section title="Career Summary">{objective}</Section>
+        <CareerSummary objective={objective} />
         <ColumnLayout
           main={[
-            <Section
-              icon={<FaPencilRuler />}
-              key="software-projects"
-              title="Software Projects"
-            >
-              {projects.map(p => (
-                <PrintableRow
-                  key={`project-${p.data.name}`}
-                  sx={{
-                    display: 'grid',
-                    gridTemplateColumns: '3em 1fr',
-                  }}
-                >
-                  <TimelineItem />
-                  <ProjectItem project={p.data} />
-                </PrintableRow>
-              ))}
-            </Section>,
-            <Section
-              icon={<FaBriefcase />}
-              key="work-experience"
-              title="Work Experience"
-            >
-              {experience
-                .sort((a, b) =>
-                  compareDesc(parseISO(a.data.start), parseISO(b.data.start))
-                )
-                .map(e => (
-                  <PrintableRow
-                    key={`experience-${e.data.name}`}
-                    printable={e.data.printable}
-                    sx={{
-                      display: 'grid',
-                      gridTemplateColumns: '3em 1fr',
-                    }}
-                  >
-                    <TimelineItem />
-                    <ExperienceItem experience={e.data} />
-                  </PrintableRow>
-                ))}
-            </Section>,
+            <SoftwareProjects key="software-projects" projects={projects} />,
+            <WorkExperience experience={experience} key="work-experience" />,
           ]}
           side={[
-            <Section icon={<FaMagic />} key="other-skills" title="Other Skills">
-              <SkillList
-                skills={skills.filter(s => parseInt(s.data.level) > 0)}
-              />
-            </Section>,
-            <Section icon={<FaBook />} key="interests" title="Interests">
-              <SkillList
-                skills={skills.filter(s => parseInt(s.data.level) === 0)}
-              />
-            </Section>,
-            <Section
-              icon={<FaGraduationCap />}
-              key="education"
-              title="Education"
-            >
-              {education
-                .sort((a, b) =>
-                  compareDesc(parseISO(a.data.start), parseISO(b.data.start))
-                )
-                .map(e => (
-                  <EducationItem
-                    education={e.data}
-                    key={`education-${e.data.name}`}
-                  />
-                ))}
-            </Section>,
-            <Section key="other-projects" title="Other Projects">
-              {otherProjects.map(p => (
-                <ProjectItem
-                  key={`small-project-${p.data.name}`}
-                  project={p.data}
-                />
-              ))}
-            </Section>,
+            <OtherSkills key="other-skills" skills={skills} />,
+            <Interests key="interests" skills={skills} />,
+            <Education education={education} key="education" />,
+            <OtherProjects
+              key="other-projects"
+              otherProjects={otherProjects}
+            />,
           ]}
         />
       </div>
@@ -158,10 +83,7 @@ export const query = graphql`
     site {
       siteMetadata {
         social {
-          github
-          gitlab
-          twitter
-          linkedin
+          ...SocialFragment
         }
       }
     }

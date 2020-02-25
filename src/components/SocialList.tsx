@@ -2,12 +2,28 @@
 import { ReactElement } from 'react'
 import { jsx, Styled } from 'theme-ui'
 import { FaTwitter, FaLinkedin, FaGitlab, FaGithub } from 'react-icons/fa'
-import { Social } from '../../models/resume'
+import { graphql } from 'gatsby'
+
+export type Social = {
+  github: string
+  gitlab: string
+  twitter: string
+  linkedin: string
+}
 
 type SocialListProps = {
   /** object containing social media information */
   social: Social
 }
+
+export const query = graphql`
+  fragment SocialFragment on SiteSiteMetadataSocial {
+    github
+    gitlab
+    twitter
+    linkedin
+  }
+`
 
 /**
  * This component creates a list of social media links
