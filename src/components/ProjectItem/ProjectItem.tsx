@@ -32,18 +32,14 @@ export function ProjectItem(props: ProjectItemProps): ReactElement {
         }}
       >
         {link ? (
-          <Link href={link} sx={{ color: 'text' }} title="Link to Project">
+          <Link color="text" href={link} title="Link to Project">
             {name} <FaLink />
           </Link>
         ) : (
           name
         )}
         {repository ? (
-          <Link
-            href={repository}
-            sx={{ fontSize: 1 }}
-            title="Link to Repository"
-          >
+          <Link href={repository} size={1} title="Link to Repository">
             <FaGitlab /> Link to Repo
           </Link>
         ) : null}

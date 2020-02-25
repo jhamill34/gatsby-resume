@@ -54,7 +54,15 @@ export function Banner(props: BannerProps): ReactElement {
             }}
           />
         </div>
-        <div sx={{ flexGrow: 99999, py: 3 }}>
+        <div
+          sx={{
+            flexGrow: 99999,
+            py: 3,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+          }}
+        >
           <div
             sx={{
               fontSize: 4,
@@ -66,17 +74,10 @@ export function Banner(props: BannerProps): ReactElement {
             {name.toUpperCase()}
           </div>
           <Link
+            activeColor="text"
+            color="inherit"
             href={`mailto:${email}`}
-            sx={{
-              fontSize: 3,
-              pt: 2,
-              display: 'inline-block',
-              color: 'inherit',
-              ':hover,:focus': {
-                color: 'text',
-                borderBottomColor: 'text',
-              },
-            }}
+            size={3}
             title="Email Me"
           >
             <FaEnvelope /> {email}
@@ -88,88 +89,43 @@ export function Banner(props: BannerProps): ReactElement {
             fontSize: 1,
             lineHeight: 'heading',
             fontFamily: 'heading',
-            div: {
-              flexGrow: 1,
-              p: 1,
-            },
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
           }}
         >
-          <div>
-            <a
-              href={social.twitter}
-              sx={{
-                color: 'inherit',
-                textDecoration: 'none',
-                borderBottom: '2px solid transparent',
-                outline: 'none',
-                transition:
-                  'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
-                ':hover,:focus': {
-                  color: 'text',
-                  borderBottomColor: 'text',
-                },
-              }}
-            >
-              <FaTwitter /> {social.twitter}
-            </a>
-          </div>
-          <div>
-            <a
-              href={social.linkedin}
-              sx={{
-                color: 'inherit',
-                textDecoration: 'none',
-                borderBottom: '2px solid transparent',
-                outline: 'none',
-                transition:
-                  'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
-                ':hover,:focus': {
-                  color: 'text',
-                  borderBottomColor: 'text',
-                },
-              }}
-            >
-              <FaLinkedin /> {social.linkedin}
-            </a>
-          </div>
-          <div>
-            <a
-              href={social.gitlab}
-              sx={{
-                color: 'inherit',
-                textDecoration: 'none',
-                borderBottom: '2px solid transparent',
-                outline: 'none',
-                transition:
-                  'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
-                ':hover,:focus': {
-                  color: 'text',
-                  borderBottomColor: 'text',
-                },
-              }}
-            >
-              <FaGitlab /> {social.gitlab}
-            </a>
-          </div>
-          <div>
-            <a
-              href={social.github}
-              sx={{
-                color: 'inherit',
-                textDecoration: 'none',
-                borderBottom: '2px solid transparent',
-                outline: 'none',
-                transition:
-                  'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
-                ':hover,:focus': {
-                  color: 'text',
-                  borderBottomColor: 'text',
-                },
-              }}
-            >
-              <FaGithub /> {social.github}
-            </a>
-          </div>
+          <Link
+            activeColor="text"
+            color="inherit"
+            href={social.twitter}
+            title="Twitter Link"
+          >
+            <FaTwitter /> {social.twitter}
+          </Link>
+          <Link
+            activeColor="text"
+            color="inherit"
+            href={social.linkedin}
+            title="Linked In Link"
+          >
+            <FaLinkedin /> {social.linkedin}
+          </Link>
+          <Link
+            activeColor="text"
+            color="inherit"
+            href={social.gitlab}
+            title="Gitlab Link"
+          >
+            <FaGitlab /> {social.gitlab}
+          </Link>
+          <Link
+            activeColor="text"
+            color="inherit"
+            href={social.github}
+            title="Github Link"
+          >
+            <FaGithub /> {social.github}
+          </Link>
         </div>
       </div>
     </div>

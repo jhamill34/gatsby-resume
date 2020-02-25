@@ -9,31 +9,49 @@ type LinkProps = {
   /** */
   title: string
 
-  /** */
-  className?: string
+  /**
+   * @default 'secondary'
+   */
+  color?: string
+
+  /**
+   * @default 'primary'
+   */
+  activeColor?: string
+
+  /**
+   * @default 'inherit'
+   */
+  size?: number
 
   /** */
   children: ReactNode
 }
 
 export function Link(props: LinkProps): ReactElement {
-  const { href, title, className } = props
+  const {
+    href,
+    title,
+    color = 'secondary',
+    activeColor = 'primary',
+    size = 'inherit',
+  } = props
   return (
     <a
-      className={className}
       href={href}
       sx={{
         display: 'block',
-        color: 'secondary',
+        color,
         textDecoration: 'none',
         mb: 1,
+        fontSize: size,
         outline: 'none',
         borderBottom: '2px solid transparent',
         transition:
           'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
         ':hover, :focus': {
-          color: 'primary',
-          borderBottomColor: 'primary',
+          color: activeColor,
+          borderBottomColor: activeColor,
         },
       }}
       title={title}
