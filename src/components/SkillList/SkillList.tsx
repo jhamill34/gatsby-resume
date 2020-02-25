@@ -13,7 +13,7 @@ export function SkillList(props: SkillListProps): ReactElement {
   const { skills } = props
 
   return (
-    <div sx={{ display: 'flex', flexWrap: 'wrap', my: 2 }}>
+    <div sx={{ display: 'flex', flexWrap: 'wrap', my: 1 }}>
       {skills.map(s => (
         <SkillItem key={`skill-${s.data.name}`} skill={s.data} />
       ))}

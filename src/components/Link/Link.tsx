@@ -26,7 +26,7 @@ export function Link(props: LinkProps): ReactElement {
         display: 'block',
         color: 'secondary',
         textDecoration: 'none',
-        my: 1,
+        mb: 1,
         outline: 'none',
         borderBottom: '2px solid transparent',
         transition:
