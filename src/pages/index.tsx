@@ -1,19 +1,15 @@
 /** @jsx jsx */
 import React from 'react'
-import { Helmet } from 'react-helmet'
 import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { FixedObject } from 'gatsby-image'
 import { compareDesc, parseISO } from 'date-fns'
-import { Global } from '@emotion/core'
 import {
   FaBriefcase,
   FaGraduationCap,
   FaPencilRuler,
   FaMagic,
   FaBook,
-  FaLink,
-  FaGitlab,
 } from 'react-icons/fa'
 import {
   Layout,
@@ -22,10 +18,14 @@ import {
   TimelineItem,
   EducationItem,
   ProjectItem,
-  SkillItem,
   Banner,
+  ColumnLayout,
+  SEO,
+  PrintableRow,
+  SkillList,
 } from '../components'
 import { Resume, Data, Social } from '../models/resume'
+import { PrintStyles } from '../components/printStyles'
 
 type IndexPageProps = {
   data: {
@@ -57,27 +57,8 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
 
   return (
     <Layout>
-      <Helmet>
-        <meta charSet="utf-8" />
-      </Helmet>
-      <Global
-        styles={{
-          '@media print': {
-            '@page': {
-              size: '8.5in 11in',
-            },
-
-            body: {
-              width: '100%',
-              height: '100%',
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              fontSize: '14px',
-            },
-          },
-        }}
-      />
+      <SEO />
+      <PrintStyles />
       <Banner
         email={email}
         image={props.data.headshot.childImageSharp.fixed}
@@ -86,23 +67,15 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
       />
       <div sx={{ px: 2 }}>
         <Section title="Career Summary">{objective}</Section>
-
-        <div
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-          }}
-        >
-          <div
-            sx={{
-              flexBasis: 0,
-              flexGrow: 99999,
-              minWidth: 320,
-            }}
-          >
-            <Section icon={<FaPencilRuler />} title="Software Projects">
+        <ColumnLayout
+          main={[
+            <Section
+              icon={<FaPencilRuler />}
+              key="software-projects"
+              title="Software Projects"
+            >
               {projects.map(p => (
-                <div
+                <PrintableRow
                   key={`project-${p.data.name}`}
                   sx={{
                     display: 'grid',
@@ -111,56 +84,49 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
                 >
                   <TimelineItem />
                   <ProjectItem project={p.data} />
-                </div>
+                </PrintableRow>
               ))}
-            </Section>
-            <Section icon={<FaBriefcase />} title="Work Experience">
+            </Section>,
+            <Section
+              icon={<FaBriefcase />}
+              key="work-experience"
+              title="Work Experience"
+            >
               {experience
                 .sort((a, b) =>
                   compareDesc(parseISO(a.data.start), parseISO(b.data.start))
                 )
                 .map(e => (
-                  <div
+                  <PrintableRow
                     key={`experience-${e.data.name}`}
+                    printable={e.data.printable}
                     sx={{
                       display: 'grid',
                       gridTemplateColumns: '3em 1fr',
-                      '@media print': {
-                        display: e.data.printable ? 'grid' : 'none',
-                      },
                     }}
                   >
                     <TimelineItem />
                     <ExperienceItem experience={e.data} />
-                  </div>
+                  </PrintableRow>
                 ))}
-            </Section>
-          </div>
-          <div
-            sx={{
-              flexBasis: 250,
-              flexGrow: 1,
-            }}
-          >
-            <Section icon={<FaMagic />} title="Other Skills">
-              <div sx={{ display: 'flex', flexWrap: 'wrap' }}>
-                {skills
-                  .filter(s => parseInt(s.data.level) > 0)
-                  .map(s => (
-                    <SkillItem key={`skill-${s.data.name}`} skill={s.data} />
-                  ))}
-              </div>
-            </Section>
-            <Section icon={<FaBook />} title="Interests">
-              <div sx={{ display: 'flex', flexWrap: 'wrap' }}>
-                {skills
-                  .filter(s => parseInt(s.data.level) === 0)
-                  .map(s => (
-                    <SkillItem key={`skill-${s.data.name}`} skill={s.data} />
-                  ))}
-              </div>
-            </Section>
-            <Section icon={<FaGraduationCap />} title="Education">
+            </Section>,
+          ]}
+          side={[
+            <Section icon={<FaMagic />} key="other-skills" title="Other Skills">
+              <SkillList
+                skills={skills.filter(s => parseInt(s.data.level) > 0)}
+              />
+            </Section>,
+            <Section icon={<FaBook />} key="interests" title="Interests">
+              <SkillList
+                skills={skills.filter(s => parseInt(s.data.level) === 0)}
+              />
+            </Section>,
+            <Section
+              icon={<FaGraduationCap />}
+              key="education"
+              title="Education"
+            >
               {education
                 .sort((a, b) =>
                   compareDesc(parseISO(a.data.start), parseISO(b.data.start))
@@ -171,90 +137,18 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
                     key={`education-${e.data.name}`}
                   />
                 ))}
-            </Section>
-            <Section title="Other Projects">
+            </Section>,
+            <Section key="other-projects" title="Other Projects">
               {otherProjects.map(p => (
-                <div
-                  key={`other-project-${p.data.name}`}
-                  sx={{
-                    mb: 2,
-                  }}
-                >
-                  <div
-                    sx={{
-                      fontSize: 2,
-                      fontWeight: 'heading',
-                      lineHeight: 'heading',
-                      fontFamily: 'heading',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-start',
-                      mb: 1,
-                    }}
-                  >
-                    {p.data.link ? (
-                      <a
-                        href={p.data.link}
-                        sx={{
-                          display: 'block',
-                          color: 'text',
-                          textDecoration: 'none',
-                          outline: 'none',
-                          borderBottom: '2px solid transparent',
-                          transition:
-                            'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
-                          ':hover, :focus': {
-                            color: 'primary',
-                            borderBottomColor: 'primary',
-                          },
-                        }}
-                        title="Link to Project"
-                      >
-                        {p.data.name} <FaLink />
-                      </a>
-                    ) : (
-                      p.data.name
-                    )}
-                    {p.data.repository ? (
-                      <a
-                        href={p.data.repository}
-                        sx={{
-                          display: 'block',
-                          fontSize: 1,
-                          color: 'secondary',
-                          textDecoration: 'none',
-                          outline: 'none',
-                          my: 1,
-                          borderBottom: '2px solid transparent',
-                          transition:
-                            'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
-                          ':hover, :focus': {
-                            color: 'primary',
-                            borderBottomColor: 'primary',
-                          },
-                        }}
-                        title="Link to Repository"
-                      >
-                        <FaGitlab /> Link to Repo
-                      </a>
-                    ) : null}
-                  </div>
-                  <div sx={{ color: 'muted', fontSize: 1, mb: 2 }}>
-                    {p.data.description}
-                  </div>
-                  <div sx={{ display: 'flex', flexWrap: 'wrap' }}>
-                    {p.data.technologies.map(s => (
-                      <SkillItem
-                        key={`other-tech-${s.data.name}`}
-                        skill={s.data}
-                      />
-                    ))}
-                  </div>
-                </div>
+                <ProjectItem
+                  fontSize={2}
+                  key={`small-project-${p.data.name}`}
+                  project={p.data}
+                />
               ))}
-            </Section>
-          </div>
-        </div>
+            </Section>,
+          ]}
+        />
       </div>
     </Layout>
   )

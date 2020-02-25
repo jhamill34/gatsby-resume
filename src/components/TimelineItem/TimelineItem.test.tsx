@@ -1,8 +1,13 @@
-// import React from 'react'
-// import { render } from '../test-helper'
+import React from 'react'
+import { render } from '../test-helper'
 
-// import { TimelineItem } from './Banner'
+import { TimelineItem } from './TimelineItem'
+import '@testing-library/jest-dom/extend-expect'
 
 describe('<TimelineItem />', () => {
-  it.todo('should have tests')
+  it('should have have no text', () => {
+    const { container } = render(<TimelineItem />)
+
+    expect(container).toHaveTextContent('')
+  })
 })

@@ -2,8 +2,8 @@
 import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
 import { format, parseISO } from 'date-fns'
-import { SkillItem } from '../SkillItem'
 import { Experience } from '../../models/resume'
+import { SkillList } from '../SkillList'
 
 type ExperienceItemProps = {
   experience: Experience
@@ -24,11 +24,7 @@ export function ExperienceItem(props: ExperienceItemProps): ReactElement {
   const timeFrame = `${startFmt} - ${endFmt}`
 
   return (
-    <div
-      sx={{
-        mb: 2,
-      }}
-    >
+    <div sx={{ m: 1 }}>
       <div
         sx={{
           display: 'flex',
@@ -62,11 +58,7 @@ export function ExperienceItem(props: ExperienceItemProps): ReactElement {
       <div sx={{ fontSize: 1, mb: 2, color: 'muted' }}>{timeFrame}</div>
       {description}
 
-      <div sx={{ display: 'flex', flexWrap: 'wrap', my: 2 }}>
-        {technologies.map(t => (
-          <SkillItem key={`proj-tech-${t.data.name}`} skill={t.data} />
-        ))}
-      </div>
+      <SkillList skills={technologies} />
     </div>
   )
 }

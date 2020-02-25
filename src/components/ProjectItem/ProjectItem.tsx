@@ -2,20 +2,27 @@
 import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
 import { FaGitlab, FaLink } from 'react-icons/fa'
-import { SkillItem } from '../SkillItem'
 import { Project } from '../../models/resume'
+import { Link } from '../Link'
+import { SkillList } from '../SkillList'
 
 type ProjectItemProps = {
+  /** */
   project: Project
+
+  /** */
+  fontSize?: number
 }
 
 export function ProjectItem(props: ProjectItemProps): ReactElement {
   const { name, repository, link, description, technologies } = props.project
+
+  const { fontSize = 3 } = props
   return (
     <div sx={{ m: 1 }}>
       <div
         sx={{
-          fontSize: 3,
+          fontSize,
           fontWeight: 'heading',
           lineHeight: 'heading',
           fontFamily: 'heading',
@@ -25,59 +32,25 @@ export function ProjectItem(props: ProjectItemProps): ReactElement {
         }}
       >
         {link ? (
-          <a
-            href={link}
-            sx={{
-              display: 'block',
-              color: 'text',
-              textDecoration: 'none',
-              outline: 'none',
-              borderBottom: '2px solid transparent',
-              transition:
-                'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
-              ':hover, :focus': {
-                color: 'primary',
-                borderBottomColor: 'primary',
-              },
-            }}
-            title="Link to Project"
-          >
+          <Link href={link} sx={{ color: 'text' }} title="Link to Project">
             {name} <FaLink />
-          </a>
+          </Link>
         ) : (
           name
         )}
         {repository ? (
-          <a
+          <Link
             href={repository}
-            sx={{
-              display: 'block',
-              fontSize: 1,
-              color: 'secondary',
-              textDecoration: 'none',
-              my: 1,
-              outline: 'none',
-              borderBottom: '2px solid transparent',
-              transition:
-                'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
-              ':hover, :focus': {
-                color: 'primary',
-                borderBottomColor: 'primary',
-              },
-            }}
+            sx={{ fontSize: 1 }}
             title="Link to Repository"
           >
             <FaGitlab /> Link to Repo
-          </a>
+          </Link>
         ) : null}
       </div>
-      {description}
+      <div sx={{ fontSize: fontSize - 1 }}>{description}</div>
 
-      <div sx={{ display: 'flex', flexWrap: 'wrap', my: 2 }}>
-        {technologies.map(t => (
-          <SkillItem key={`proj-tech-${t.data.name}`} skill={t.data} />
-        ))}
-      </div>
+      <SkillList skills={technologies} />
     </div>
   )
 }

@@ -10,6 +10,7 @@ import {
   FaGithub,
 } from 'react-icons/fa'
 import { Social } from '../../models/resume'
+import { Link } from '../Link'
 
 type BannerProps = {
   name: string
@@ -64,32 +65,22 @@ export function Banner(props: BannerProps): ReactElement {
           >
             {name.toUpperCase()}
           </div>
-          <div
+          <Link
+            href={`mailto:${email}`}
             sx={{
               fontSize: 3,
               pt: 2,
-              lineHeight: 'heading',
-              fontFamily: 'heading',
+              display: 'inline-block',
+              color: 'inherit',
+              ':hover,:focus': {
+                color: 'text',
+                borderBottomColor: 'text',
+              },
             }}
+            title="Email Me"
           >
-            <a
-              href={`mailto:${email}`}
-              sx={{
-                color: 'inherit',
-                textDecoration: 'none',
-                borderBottom: '2px solid transparent',
-                outline: 'none',
-                transition:
-                  'color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out',
-                ':hover,:focus': {
-                  color: 'text',
-                  borderBottomColor: 'text',
-                },
-              }}
-            >
-              <FaEnvelope /> {email}
-            </a>
-          </div>
+            <FaEnvelope /> {email}
+          </Link>
         </div>
 
         <div

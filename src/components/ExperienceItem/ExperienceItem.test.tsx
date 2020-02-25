@@ -57,7 +57,4 @@ describe('<ExperienceItem />', () => {
     expect(getByText('Java')).not.toBeNull()
     expect(getByText('C++')).not.toBeNull()
   })
-
-  it.todo('should render block on print')
-  it.todo('should render none on print')
 })
