@@ -12,17 +12,17 @@ import {
   FaBook,
 } from 'react-icons/fa'
 import {
-  Layout,
-  Section,
-  ExperienceItem,
-  TimelineItem,
-  EducationItem,
-  ProjectItem,
   Banner,
   ColumnLayout,
-  SEO,
+  EducationItem,
+  ExperienceItem,
+  Layout,
   PrintableRow,
+  ProjectItem,
+  SEO,
+  Section,
   SkillList,
+  TimelineItem,
 } from '../components'
 import { Resume, Data, Social } from '../models/resume'
 import { PrintStyles } from '../components/printStyles'

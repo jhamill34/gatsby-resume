@@ -2,15 +2,10 @@
 import { ReactElement } from 'react'
 import { jsx, Theme } from 'theme-ui'
 import Img, { FixedObject } from 'gatsby-image'
-import {
-  FaEnvelope,
-  FaTwitter,
-  FaLinkedin,
-  FaGitlab,
-  FaGithub,
-} from 'react-icons/fa'
+import { FaEnvelope } from 'react-icons/fa'
 import { Social } from '../../models/resume'
 import { Link } from '../Link'
+import { SocialList } from '../SocialList'
 
 type BannerProps = {
   name: string
@@ -84,49 +79,7 @@ export function Banner(props: BannerProps): ReactElement {
           </Link>
         </div>
 
-        <div
-          sx={{
-            fontSize: 1,
-            lineHeight: 'heading',
-            fontFamily: 'heading',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-          }}
-        >
-          <Link
-            activeColor="text"
-            color="inherit"
-            href={social.twitter}
-            title="Twitter Link"
-          >
-            <FaTwitter /> {social.twitter}
-          </Link>
-          <Link
-            activeColor="text"
-            color="inherit"
-            href={social.linkedin}
-            title="Linked In Link"
-          >
-            <FaLinkedin /> {social.linkedin}
-          </Link>
-          <Link
-            activeColor="text"
-            color="inherit"
-            href={social.gitlab}
-            title="Gitlab Link"
-          >
-            <FaGitlab /> {social.gitlab}
-          </Link>
-          <Link
-            activeColor="text"
-            color="inherit"
-            href={social.github}
-            title="Github Link"
-          >
-            <FaGithub /> {social.github}
-          </Link>
-        </div>
+        <SocialList social={social} />
       </div>
     </div>
   )
