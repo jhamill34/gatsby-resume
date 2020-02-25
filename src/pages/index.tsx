@@ -9,8 +9,7 @@ import {
   CareerSummary,
   SoftwareProjects,
   WorkExperience,
-  OtherSkills,
-  Interests,
+  Skills,
   Education,
   OtherProjects,
 } from '../sections'
@@ -64,8 +63,7 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
             <WorkExperience experience={experience} key="work-experience" />,
           ]}
           side={[
-            <OtherSkills key="other-skills" skills={skills} />,
-            <Interests key="interests" skills={skills} />,
+            <Skills key="other-skills" skills={skills} />,
             <Education education={education} key="education" />,
             <OtherProjects
               key="other-projects"
