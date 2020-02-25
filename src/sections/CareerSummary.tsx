@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
-import { Section } from '../components'
+import { Section } from '../components/Section'
 
 type CareerSummaryProps = {
   objective: string

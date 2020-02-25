@@ -3,7 +3,16 @@ import React from 'react'
 import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { FixedObject } from 'gatsby-image'
-import { ColumnLayout, Layout, SEO } from '../components'
+
+import { Education as Edu } from '../components/EducationItem'
+import { Experience } from '../components/ExperienceItem'
+import { Skill } from '../components/SkillList'
+import { Project } from '../components/ProjectItem'
+import { ColumnLayout } from '../components/ColumnLayout'
+import { Layout } from '../components/Layout'
+import { SEO } from '../components/SEO'
+import { Social } from '../components/SocialList'
+
 import {
   Banner,
   CareerSummary,
@@ -13,9 +22,19 @@ import {
   Education,
   OtherProjects,
 } from '../sections'
-import { Resume, Data } from '../models/resume'
+import { Data } from '../models/resume'
 import { PrintStyles } from '../components/printStyles'
-import { Social } from '../components/SocialList'
+
+export type Resume = {
+  name: string
+  objective: string
+  email: string
+  education: Data<Edu>[]
+  experience: Data<Experience>[]
+  projects: Data<Project>[]
+  otherProjects: Data<Project>[]
+  skills: Data<Skill>[]
+}
 
 type IndexPageProps = {
   data: {
@@ -100,68 +119,31 @@ export const query = graphql`
     ) {
       data {
         name
-        objective
         email
+        objective
         education {
           data {
-            name
-            location
-            major
-            description
-            specialization
-            start
-            end
+            ...EducationFragment
           }
         }
         experience {
           data {
-            name
-            position
-            location
-            description
-            start
-            end
-            printable
-            technologies {
-              data {
-                name
-                level
-              }
-            }
+            ...WorkExperienceFragment
           }
         }
         projects {
           data {
-            name
-            description
-            link
-            repository
-            technologies {
-              data {
-                name
-                level
-              }
-            }
+            ...ProjectFragment
           }
         }
         otherProjects {
           data {
-            name
-            description
-            link
-            repository
-            technologies {
-              data {
-                name
-                level
-              }
-            }
+            ...ProjectFragment
           }
         }
         skills {
           data {
-            name
-            level
+            ...SkillFragment
           }
         }
       }

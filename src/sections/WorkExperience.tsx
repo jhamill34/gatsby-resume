@@ -3,13 +3,12 @@ import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
 import { FaBriefcase } from 'react-icons/fa'
 import { compareDesc, parseISO } from 'date-fns'
-import {
-  Section,
-  PrintableRow,
-  TimelineItem,
-  ExperienceItem,
-} from '../components'
-import { Data, Experience } from '../models/resume'
+
+import { Section } from '../components/Section'
+import { PrintableRow } from '../components/PrintableRow'
+import { TimelineItem } from '../components/TimelineItem'
+import { ExperienceItem, Experience } from '../components/ExperienceItem'
+import { Data } from '../models/resume'
 
 type WorkExperienceProps = {
   experience: Data<Experience>[]

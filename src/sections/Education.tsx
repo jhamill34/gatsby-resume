@@ -3,8 +3,9 @@ import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
 import { FaGraduationCap } from 'react-icons/fa'
 import { compareDesc, parseISO } from 'date-fns'
-import { Section, EducationItem } from '../components'
-import { Data, Education as Edu } from '../models/resume'
+import { Section } from '../components/Section'
+import { EducationItem, Education as Edu } from '../components/EducationItem'
+import { Data } from '../models/resume'
 
 type EducationProps = {
   education: Data<Edu>[]

@@ -3,12 +3,34 @@ import { ReactElement } from 'react'
 import { jsx, Styled } from 'theme-ui'
 import { format, parseISO } from 'date-fns'
 
-import { Education } from '../../models/resume'
+import { graphql } from 'gatsby'
+
+export type Education = {
+  name: string
+  location: string
+  major: string
+  description: string
+  specialization: string
+  start: string
+  end: string
+}
 
 type EducationItemProps = {
   /** An object of all education related information */
   education: Education
 }
+
+export const query = graphql`
+  fragment EducationFragment on AirtableData {
+    name
+    location
+    major
+    description
+    specialization
+    start
+    end
+  }
+`
 
 /**
  * Formats items intended to highlight a person's education

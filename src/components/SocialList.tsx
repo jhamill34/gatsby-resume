@@ -11,11 +11,6 @@ export type Social = {
   linkedin: string
 }
 
-type SocialListProps = {
-  /** object containing social media information */
-  social: Social
-}
-
 export const query = graphql`
   fragment SocialFragment on SiteSiteMetadataSocial {
     github
@@ -24,6 +19,11 @@ export const query = graphql`
     linkedin
   }
 `
+
+type SocialListProps = {
+  /** object containing social media information */
+  social: Social
+}
 
 /**
  * This component creates a list of social media links

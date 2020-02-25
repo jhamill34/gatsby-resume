@@ -2,12 +2,41 @@
 import { ReactElement } from 'react'
 import { jsx, Styled } from 'theme-ui'
 import { format, parseISO } from 'date-fns'
-import { Experience } from '../../models/resume'
-import { SkillList } from '../SkillList'
+import { graphql } from 'gatsby'
+import { Data } from '../../models/resume'
+import { SkillList, Skill } from '../SkillList'
+
+export type Experience = {
+  name: string
+  position: string
+  location: string
+  description: string
+  start: string
+  end: string
+  technologies: Data<Skill>[]
+  printable: boolean
+}
 
 type ExperienceItemProps = {
   experience: Experience
 }
+
+export const query = graphql`
+  fragment WorkExperienceFragment on AirtableData {
+    name
+    position
+    location
+    description
+    start
+    end
+    printable
+    technologies {
+      data {
+        ...SkillFragment
+      }
+    }
+  }
+`
 
 /**
  * Formats items intended to highlight a person's work experience

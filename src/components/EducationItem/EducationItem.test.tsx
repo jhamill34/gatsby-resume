@@ -1,8 +1,7 @@
 import React from 'react'
 import { render } from '../test-helper'
 
-import { Education } from '../../models/resume'
-import { EducationItem } from './EducationItem'
+import { EducationItem, Education } from './EducationItem'
 
 const mockEd: Education = {
   name: 'University of Washington',

@@ -1,8 +1,9 @@
 /** @jsx jsx */
 import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
-import { Section, ProjectItem } from '../components'
-import { Project, Data } from '../models/resume'
+import { Section } from '../components/Section'
+import { ProjectItem, Project } from '../components/ProjectItem'
+import { Data } from '../models/resume'
 
 type OtherProjectsProps = {
   otherProjects: Data<Project>[]
