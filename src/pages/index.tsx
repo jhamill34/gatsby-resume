@@ -10,7 +10,7 @@ import { SEO } from '../components/SEO'
 
 import {
   BannerSection,
-  CareerSummarySection,
+  ObjectiveSection,
   SoftwareProjectsSection,
   WorkExperienceSection,
   SkillsSection,
@@ -58,7 +58,7 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
         social={props.data.site.siteMetadata.social}
       />
       <div sx={{ px: 2 }}>
-        <CareerSummarySection objective={objective} />
+        <ObjectiveSection objective={objective} />
         <ColumnLayout
           main={[
             <SoftwareProjectsSection
@@ -108,7 +108,7 @@ export const query = graphql`
     ) {
       data {
         ...BannerFragment
-        ...CareerSummaryFragment
+        ...ObjectiveFragment
         education {
           data {
             ...EducationFragment

@@ -4,17 +4,17 @@ import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 import { Section } from '../../components'
 
-type CareerSummaryProps = {
+type ObjectiveProps = {
   objective: string
 }
 
 export const query = graphql`
-  fragment CareerSummaryFragment on AirtableData {
+  fragment ObjectiveFragment on AirtableData {
     objective
   }
 `
 
-export function CareerSummarySection(props: CareerSummaryProps): ReactElement {
+export function ObjectiveSection(props: ObjectiveProps): ReactElement {
   const { objective } = props
-  return <Section title="Career Summary">{objective}</Section>
+  return <Section title="Objective">{objective}</Section>
 }

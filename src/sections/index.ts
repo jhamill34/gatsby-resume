@@ -1,5 +1,5 @@
 export * from './BannerSection'
-export * from './CareerSummarySection'
+export * from './ObjectiveSection'
 export * from './EducationSection'
 export * from './OtherProjectsSection'
 export * from './SkillsSection'

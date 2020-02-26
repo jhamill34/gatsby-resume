@@ -25,7 +25,7 @@ export function Section(props: SectionProps): ReactElement {
       <Styled.h2>
         {props.icon} {props.title.toUpperCase()}
       </Styled.h2>
-      <Styled.p>{props.children}</Styled.p>
+      {props.children}
     </div>
   )
 }
