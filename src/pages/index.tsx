@@ -47,15 +47,18 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
     skills,
   } = props.data.resume.data
 
+  const { fixed: headshot } = props.data.headshot.childImageSharp
+  const { social } = props.data.site.siteMetadata
+
   return (
     <Layout>
-      <SEO />
+      <SEO description={objective} title={`${name} | Resume`} />
       <PrintStyles />
       <BannerSection
         email={email}
-        image={props.data.headshot.childImageSharp.fixed}
+        image={headshot}
         name={name}
-        social={props.data.site.siteMetadata.social}
+        social={social}
       />
       <div sx={{ px: 2 }}>
         <ObjectiveSection objective={objective} />

@@ -4,10 +4,9 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Joshua Rasmussen Resume`,
     author: `Joshua Rasmussen`,
     social: {
-      github: 'github.com/joshrasmussen',
+      github: 'github.com/joshrasmussen34',
       gitlab: 'gitlab.com/joshrasmussen',
       twitter: 'twitter.com/jlrasmussen34',
       linkedin: 'linkedin.com/in/jlrasmussen34',

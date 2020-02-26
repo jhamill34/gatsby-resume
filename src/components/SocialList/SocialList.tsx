@@ -38,7 +38,7 @@ export function SocialList(props: SocialListProps): ReactElement {
     >
       <li>
         <Styled.a
-          href={social.twitter}
+          href={`https://${social.twitter}`}
           sx={{ variant: 'links.banner' }}
           title="Twitter Link"
         >
@@ -47,27 +47,27 @@ export function SocialList(props: SocialListProps): ReactElement {
       </li>
       <li>
         <Styled.a
-          href={social.twitter}
+          href={`https://${social.linkedin}`}
           sx={{ variant: 'links.banner' }}
-          title="Twitter Link"
+          title="Linked In Link"
         >
           <FaLinkedin /> {social.linkedin}
         </Styled.a>
       </li>
       <li>
         <Styled.a
-          href={social.twitter}
+          href={`https://${social.gitlab}`}
           sx={{ variant: 'links.banner' }}
-          title="Twitter Link"
+          title="Gitlab Link"
         >
           <FaGitlab /> {social.gitlab}
         </Styled.a>
       </li>
       <li>
         <Styled.a
-          href={social.twitter}
+          href={`https://${social.github}`}
           sx={{ variant: 'links.banner' }}
-          title="Twitter Link"
+          title="Github Link"
         >
           <FaGithub /> {social.github}
         </Styled.a>
