@@ -107,9 +107,8 @@ export const query = graphql`
       data: { name: { eq: "Joshua Rasmussen" } }
     ) {
       data {
-        name
-        email
-        objective
+        ...BannerFragment
+        ...CareerSummaryFragment
         education {
           data {
             ...EducationFragment

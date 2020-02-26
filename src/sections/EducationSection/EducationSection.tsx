@@ -3,7 +3,7 @@ import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
 import { FaGraduationCap } from 'react-icons/fa'
 import { compareDesc, parseISO } from 'date-fns'
-import { Section, EducationItem } from '../components'
+import { Section, EducationItem } from '../../components'
 
 type EducationProps = {
   education: Data<EducationModel>[]

@@ -3,7 +3,8 @@ import { ReactElement } from 'react'
 import { jsx, Theme, Styled } from 'theme-ui'
 import Img, { FixedObject } from 'gatsby-image'
 import { FaEnvelope } from 'react-icons/fa'
-import { SocialList } from '../components'
+import { graphql } from 'gatsby'
+import { SocialList } from '../../components'
 
 type BannerProps = {
   /** The persons name at the top of the resume */
@@ -18,6 +19,13 @@ type BannerProps = {
   /** An object refering to social media accounts */
   social: SocialModel
 }
+
+export const query = graphql`
+  fragment BannerFragment on AirtableData {
+    name
+    email
+  }
+`
 
 /**
  * This component belongs at the top of the page and

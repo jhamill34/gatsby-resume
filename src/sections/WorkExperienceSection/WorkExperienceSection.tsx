@@ -8,7 +8,7 @@ import {
   PrintableRow,
   TimelineItem,
   ExperienceItem,
-} from '../components'
+} from '../../components'
 
 type WorkExperienceProps = {
   experience: Data<ExperienceModel>[]

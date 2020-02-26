@@ -2,7 +2,7 @@
 import { ReactElement } from 'react'
 import { jsx, Styled } from 'theme-ui'
 import { FaMagic } from 'react-icons/fa'
-import { Section, SkillList } from '../components'
+import { Section, SkillList } from '../../components'
 
 type SkillsProps = {
   skills: Data<SkillModel>[]

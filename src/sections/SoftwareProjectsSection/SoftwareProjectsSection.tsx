@@ -2,7 +2,12 @@
 import { ReactElement } from 'react'
 import { jsx } from 'theme-ui'
 import { FaPencilRuler } from 'react-icons/fa'
-import { Section, PrintableRow, TimelineItem, ProjectItem } from '../components'
+import {
+  Section,
+  PrintableRow,
+  TimelineItem,
+  ProjectItem,
+} from '../../components'
 
 type SoftwareProjectsProps = {
   projects: Data<ProjectModel>[]
