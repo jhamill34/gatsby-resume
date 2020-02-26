@@ -2,7 +2,6 @@
 import { ReactElement } from 'react'
 import { jsx, Theme, Styled } from 'theme-ui'
 import Img, { FixedObject } from 'gatsby-image'
-import { FaEnvelope } from 'react-icons/fa'
 import { graphql } from 'gatsby'
 import { SocialList } from '../../components'
 
@@ -54,7 +53,8 @@ export function BannerSection(props: BannerProps): ReactElement {
         <div
           sx={{
             p: 3,
-            flex: '1 1 auto',
+            flexGrow: 1,
+            textAlign: 'center',
           }}
         >
           <Img
@@ -66,27 +66,15 @@ export function BannerSection(props: BannerProps): ReactElement {
             }}
           />
         </div>
-        <div
+        <Styled.h1
           sx={{
+            textAlign: ['center', 'left'],
             flexGrow: 99999,
-            py: 3,
-            fontSize: 3,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
           }}
         >
-          <Styled.h1>{name.toUpperCase()}</Styled.h1>
-          <Styled.a
-            href={`mailto:${email}`}
-            sx={{ variant: 'links.banner' }}
-            title="Email Me"
-          >
-            <FaEnvelope /> {email}
-          </Styled.a>
-        </div>
-
-        <SocialList social={social} />
+          {name.toUpperCase()}
+        </Styled.h1>
+        <SocialList email={email} social={social} />
       </div>
     </div>
   )

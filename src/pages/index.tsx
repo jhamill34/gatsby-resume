@@ -99,7 +99,7 @@ export const query = graphql`
 
     headshot: file(name: { eq: "headshot" }) {
       childImageSharp {
-        fixed(width: 75, height: 75) {
+        fixed(width: 85, height: 85) {
           ...GatsbyImageSharpFixed_tracedSVG
         }
       }

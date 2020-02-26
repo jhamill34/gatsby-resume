@@ -1,7 +1,14 @@
 /** @jsx jsx */
 import { ReactElement } from 'react'
 import { jsx, Styled } from 'theme-ui'
-import { FaTwitter, FaLinkedin, FaGitlab, FaGithub } from 'react-icons/fa'
+import {
+  FaTwitter,
+  FaLinkedin,
+  FaGitlab,
+  FaGithub,
+  FaEnvelope,
+} from 'react-icons/fa'
+
 import { graphql } from 'gatsby'
 
 export const query = graphql`
@@ -14,6 +21,9 @@ export const query = graphql`
 `
 
 type SocialListProps = {
+  /** Email for contacting */
+  email: string
+
   /** object containing social media information */
   social: SocialModel
 }
@@ -27,22 +37,35 @@ export function SocialList(props: SocialListProps): ReactElement {
   return (
     <ul
       sx={{
-        fontSize: 2,
+        fontSize: 4,
+        p: 0,
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
+        flexGrow: 1,
         li: {
+          mx: 2,
+          flexGrow: 1,
+          lineHeight: 0,
           listStyleType: 'none',
+          textAlign: 'center',
         },
       }}
     >
+      <li>
+        <Styled.a
+          href={`mailto:${props.email}`}
+          sx={{ variant: 'links.banner' }}
+          title="Email Me"
+        >
+          <FaEnvelope />
+        </Styled.a>
+      </li>
       <li>
         <Styled.a
           href={`https://${social.twitter}`}
           sx={{ variant: 'links.banner' }}
           title="Twitter Link"
         >
-          <FaTwitter /> {social.twitter}
+          <FaTwitter />
         </Styled.a>
       </li>
       <li>
@@ -51,7 +74,7 @@ export function SocialList(props: SocialListProps): ReactElement {
           sx={{ variant: 'links.banner' }}
           title="Linked In Link"
         >
-          <FaLinkedin /> {social.linkedin}
+          <FaLinkedin />
         </Styled.a>
       </li>
       <li>
@@ -60,7 +83,7 @@ export function SocialList(props: SocialListProps): ReactElement {
           sx={{ variant: 'links.banner' }}
           title="Gitlab Link"
         >
-          <FaGitlab /> {social.gitlab}
+          <FaGitlab />
         </Styled.a>
       </li>
       <li>
@@ -69,7 +92,7 @@ export function SocialList(props: SocialListProps): ReactElement {
           sx={{ variant: 'links.banner' }}
           title="Github Link"
         >
-          <FaGithub /> {social.github}
+          <FaGithub />
         </Styled.a>
       </li>
     </ul>

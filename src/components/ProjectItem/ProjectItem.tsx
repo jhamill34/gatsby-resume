@@ -50,17 +50,18 @@ export function ProjectItem(props: ProjectItemProps): ReactElement {
           name
         )}
       </Styled.h3>
+
+      <Styled.p>{description}</Styled.p>
+
       {repository ? (
         <Styled.a
           href={repository}
-          sx={{ fontWeight: 'bold' }}
+          sx={{ variant: 'links.button' }}
           title="Link to Repository"
         >
           <FaGitlab /> Link to Repo
         </Styled.a>
       ) : null}
-
-      <Styled.p>{description}</Styled.p>
 
       <SkillList skills={technologies} />
     </div>

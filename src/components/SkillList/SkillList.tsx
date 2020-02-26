@@ -37,7 +37,7 @@ export function SkillList(props: SkillListProps): ReactElement {
             mb: 1,
             px: 2,
             py: 1,
-            borderRadius: 4,
+            borderRadius: '1em',
             transition: 'all 0.2s ease-in-out',
             ':hover, :focus': {
               bg: 'primary',

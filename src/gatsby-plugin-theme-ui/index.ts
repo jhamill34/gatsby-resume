@@ -8,6 +8,7 @@ type LinkVariants = {
 }
 
 const theme: Theme & LinkVariants = {
+  breakpoints: ['680px'],
   fonts: {
     body: 'Helvetica, sans-serif',
     heading: 'Helvetica, sans-serif',
@@ -18,7 +19,7 @@ const theme: Theme & LinkVariants = {
     heading: 700,
     bold: 700,
   },
-  fontSizes: [8, 10, 12, 14, 18, 24, 32],
+  fontSizes: [8, 10, 12, 14, 20, 24, 32],
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   lineHeights: {
     body: 1.5,
@@ -43,6 +44,9 @@ const theme: Theme & LinkVariants = {
     heading: {
       color: 'text',
     },
+    button: {
+      fontWeight: 'bold',
+    },
   },
   styles: {
     root: {
@@ -53,7 +57,7 @@ const theme: Theme & LinkVariants = {
     },
     h1: {
       color: 'background',
-      my: 1,
+      my: 3,
       fontFamily: 'heading',
       lineHeight: 'heading',
       fontWeight: 'heading',
@@ -112,7 +116,7 @@ const theme: Theme & LinkVariants = {
       fontSize: 'inherit',
       color: 'secondary',
       textDecoration: 'none',
-      mb: 1,
+      mb: 2,
       outline: 'none',
       borderBottom: '2px solid transparent',
       transition:
