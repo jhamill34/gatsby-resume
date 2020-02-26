@@ -36,11 +36,11 @@ export function BannerSection(props: BannerProps): ReactElement {
   return (
     <div
       sx={{
-        color: 'background',
         px: 4,
         py: 2,
+        bg: 'primary',
         backgroundImage: (theme: Theme): string =>
-          `linear-gradient(45deg, ${theme.colors?.secondary}, ${theme.colors?.primary})`,
+          `linear-gradient(45deg, ${theme.colors?.primary}, ${theme.colors?.secondary})`,
       }}
     >
       <div

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { ReactElement } from 'react'
-import { jsx, Theme } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import { graphql } from 'gatsby'
 
 type SkillListProps = {
@@ -30,18 +30,17 @@ export function SkillList(props: SkillListProps): ReactElement {
             listStyleType: 'none',
             fontSize: 1,
             color: 'background',
-            backgroundImage: (theme: Theme): string =>
-              `linear-gradient(90deg, ${theme.colors?.secondary}, ${theme.colors?.primary})`,
             fontWeight: 'bold',
+            letterSpacing: 0.5,
+            bg: 'secondary',
             mr: 1,
             mb: 1,
             px: 2,
             py: 1,
             borderRadius: 4,
-            transition: 'all 0.3s ease-in-out',
+            transition: 'all 0.2s ease-in-out',
             ':hover, :focus': {
-              backgroundImage: (theme: Theme): string =>
-                `linear-gradient(90deg, ${theme.colors?.primary}, ${theme.colors?.secondary})`,
+              bg: 'primary',
             },
           }}
         >

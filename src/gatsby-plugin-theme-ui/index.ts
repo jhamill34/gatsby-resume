@@ -27,16 +27,17 @@ const theme: Theme & LinkVariants = {
   colors: {
     background: '#FFFFFF',
     text: '#303030',
-    primary: '#31C3C8',
-    secondary: '#31A1C8',
+    primary: '#0E604C',
+    secondary: '#0E565F',
     muted: '#585858',
   },
   links: {
     banner: {
       color: 'background',
+      transition: 'all 0.2s ease-in-out',
       ':focus, :hover': {
-        color: 'text',
-        borderBottomColor: 'text',
+        color: 'background',
+        borderBottomColor: 'background',
       },
     },
     heading: {
@@ -59,6 +60,7 @@ const theme: Theme & LinkVariants = {
       fontSize: 5,
     },
     h2: {
+      color: 'primary',
       fontSize: 4,
       fontWeight: 'heading',
       lineHeight: 'heading',
