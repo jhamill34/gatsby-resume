@@ -61,7 +61,7 @@ const theme: Theme & LinkVariants = {
       fontFamily: 'heading',
       lineHeight: 'heading',
       fontWeight: 'heading',
-      fontSize: 5,
+      fontSize: 6,
     },
     h2: {
       color: 'primary',

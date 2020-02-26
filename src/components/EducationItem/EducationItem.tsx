@@ -36,7 +36,7 @@ export function EducationItem(props: EducationItemProps): ReactElement {
   const timeFrame = `${startFmt} - ${endFmt}`
 
   return (
-    <div sx={{ mb: 3 }}>
+    <div sx={{ mb: 2 }}>
       <Styled.h3>{major}</Styled.h3>
       <em>{specialization}</em>
       <Styled.h4>{name}</Styled.h4>
