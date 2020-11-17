@@ -64,13 +64,13 @@ export default function IndexPage(props: IndexPageProps): React.ReactElement {
         <ObjectiveSection objective={objective} />
         <ColumnLayout
           main={[
-            <SoftwareProjectsSection
-              key="software-projects"
-              projects={projects}
-            />,
             <WorkExperienceSection
               experience={experience}
               key="work-experience"
+            />,
+            <SoftwareProjectsSection
+              key="software-projects"
+              projects={projects}
             />,
           ]}
           side={[
