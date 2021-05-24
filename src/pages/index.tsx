@@ -107,7 +107,7 @@ export const query = graphql`
 
     resume: airtable(
       table: { eq: "Resume" }
-      data: { name: { eq: "Joshua Rasmussen" } }
+      data: { name: { eq: "Joshua Hamill" } }
     ) {
       data {
         ...BannerFragment
