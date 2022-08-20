@@ -4,12 +4,12 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    author: `Joshua Rasmussen`,
+    author: `Joshua Hamill`,
     social: {
-      github: 'github.com/joshrasmussen34',
+      github: 'github.com/jhamill34',
       gitlab: 'gitlab.com/joshrasmussen',
-      twitter: 'twitter.com/jlrasmussen34',
-      linkedin: 'linkedin.com/in/jlrasmussen34',
+      twitter: 'twitter.com/jhamill34',
+      linkedin: 'linkedin.com/in/jhamill34',
     },
   },
   plugins: [
