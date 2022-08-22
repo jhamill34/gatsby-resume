@@ -18,6 +18,15 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-theme-ui`,
     {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [`G-Q2BY1ZFMDL`],
+        pluginConfig: {
+          head: true,
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
